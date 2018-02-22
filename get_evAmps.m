@@ -18,6 +18,6 @@ function evAmps = get_evAmps(roiVals  , raster ,  evStartTime , evDurations)
         end
         mask = sum(rWindow,1) > 0;
         rWindow = window(:,mask);
-        evAmps(ii) = mean(max(window));
+        evAmps(ii) = mean(max(rWindow));
     end
 end

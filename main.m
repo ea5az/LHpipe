@@ -10,25 +10,18 @@ warning off
 disp('Starting.')
 DATASET = 'Fried';
 params = getParams(DATASET); flags = getFlags(DATASET);
-for aa = linspace(0.2,0.7,6)
-    aa
-    params.FilterA = aa;
-    [savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
+[savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
 
-    %%
-    % 0 = V1 , 1 = S1 , 2 = RL , 3 = AL
-    params.COND = 0;
-    tab = savTab(logical((savTab.rates > params.lEventLower) + isnan(savTab.rates)) , :);
-    tab = tab(logical((tab.cond == params.COND) + (isnan(tab.cond))) , :); pcaTab = savPcaTab(savPcaTab.cond == params.COND , :);
+%%
+% 0 = V1 , 1 = S1 , 2 = RL , 3 = AL
+params.COND = 0;
+tab = savTab(logical((savTab.rates > params.lEventLower) + isnan(savTab.rates)) , :);
+tab = tab(logical((tab.cond == params.COND) + (isnan(tab.cond))) , :); pcaTab = savPcaTab(savPcaTab.cond == params.COND , :);
 
-    %%
-    tab.amps = tab.amps + 1;
-    scatterAmpJitter(tab,params,flags);
-    hold on
-    scatter(data(:,7)/100,data(:,6),10,'red','filled')
-    [p,D] = diff.kstest2d([data(:,7)/100,data(:,6)],[tab.rates , tab.amps])
-    title(sprintf('a = %d , D = %d',aa,D))
-end
+%%
+tab.amps = tab.amps + 1;
+
+
 %%
 
 uID = unique(tab.id(~isnan(tab.id)));
@@ -44,11 +37,11 @@ for ii = 1:length(uID)
 end
 
 %%
-scatterAmpJitter(tab,params,flags);
+scatterAmpJitter(tab,params,flags)% , data);
 %%
 boxParRate(tab,params)
 %% 
- dendoParAmp(tab,params,flags,'single','euclidean')
+dendoParAmp(tab,params,flags,'median','euclidean')
 % 
 %%
 % GMMcluster(tab,params,flags)
@@ -340,7 +333,7 @@ function [] = dendoParAmp(tab,params,flags,method,method2)
         mJitter(ii+1) = nanmean(tab.jitter(labs == ii));
         mPar(ii+1) = nanmean(tab.rates(labs == ii));
     end
-    L = linkage([mAmps mJitter mPar],method,method2); dendrogram(L,'Reorder',1:10);
+    L = linkage([mAmps mJitter],method,method2); dendrogram(L,'Reorder',1:10);
     xticklabels({'0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%'});
     title(sprintf('M1: %s , M2: %s',method , method2))
 end
@@ -873,12 +866,18 @@ function [] = pcaEnuFor(pcaTab , params)
     sigstar({[1,2]},p);
 end
 
-function [] = scatterAmpJitter(tab,params,flags)
+function [] = scatterAmpJitter(tab,params,flags , data)
     figure(); 
-    % subplot(1,2,1);
+    subplot(1,2,1);
     colormap(jet);scatter(tab.rates,tab.amps,params.ScatterPointSize,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black')); 
     ylabel('Amplitude ^{F}/_{F0}'); xlim([0,1]); %ylim([0.8,1.6])
     xlabel('Participation rate (%)');% colorbar
+    
+    if nargin > 3
+        hold on 
+        scatter(data(:,7)/100,data(:,6),10,'red','filled')
+    end
+        
     if flags.addRegLine
         hold on;
         X = [ones(length(tab.rates(tab.rates < params.lEventUpper)),1) tab.rates(tab.rates < params.lEventUpper)];
@@ -902,9 +901,13 @@ function [] = scatterAmpJitter(tab,params,flags)
         dp = linspace(params.lEventUpper,1);
         plot(dp , dp*b(2) + b(1),'b','LineWidth',2)
     end
-%     subplot(1,2,2);
-%     colormap(jet);scatter(tab.rates,tab.jitter,params.ScatterPointSize,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black')); 
-%     xlabel('Participation Rate'); ylabel('Jitter'); xlim([0,1]);colorbar;
+    subplot(1,2,2);
+    colormap(jet);scatter(tab.rates,tab.jitter,params.ScatterPointSize,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black')); 
+    xlabel('Participation Rate'); ylabel('Jitter'); xlim([0,1]);
+    if nargin > 3
+        hold on 
+        scatter(data(:,7)/100,data(:,5),10,'red','filled')
+    end
 %     print(sprintf('fig_Fried/%sScatter','V1'),'-dpng')
 
 end

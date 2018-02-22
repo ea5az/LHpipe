@@ -27,7 +27,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
     
     cID = NaN; cCond = NaN;
     for ii = 1:length(fileList)
-        fileStr = fileList{ii};
+        fileStr = fileList{ii}
         % extract expriment identifiers
         [expID , expID2] = getExpID(fileStr,params);
 

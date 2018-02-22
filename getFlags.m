@@ -50,7 +50,7 @@ function flags = getFlags(DATASET)
     flags.corrPlot = 0; % plot correlations
     flags.plotARMA = 1; % display AR plot
     flags.meanCorr = 0; % use mean value of correlations instead of cell individual
-    flags.storeCorr = 1; % store correlations in file
+    flags.storeCorr = 0; % store correlations in file
     flags.addRegLine = 0; % add regression line to scatter plot
     
     flags.fixThreshPerExp = 1; % use same threshold for all experiments on one animal
