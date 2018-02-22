@@ -44,10 +44,10 @@ for ii = 1:length(fileList)
             sMean = readIn.means(cStartTime:cStartTime+cDur , jj);
             if sum(sRaster) > 0
                 if sTab.rates(kk) > params.lEventUpper
-                    lAmps = mean(lAcc); hAmps = max(sMean);
+                    lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];
                     lAcc = [];
                 else
-                    lAcc = [lAcc max(sMean)];
+                    lAcc = [lAcc nanmax(sMean)];
                 end
                 
             end
