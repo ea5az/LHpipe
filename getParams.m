@@ -22,7 +22,7 @@ function params = getParams(DATASET)
         params.leaveOutRatio = 0.9; % how many percent of ROIs to keep
         params.trDiffRat = 1;
         params.endEventPR = 1.7; % multiply event threshold by this number to get end threshold
-        params.evRateWindow = 61;%21; % how many events to consider maximally
+        params.evRateWindow = 21; % how many events to consider maximally
 
         params.labels = {'NORMAL' , 'BINOCULAR ENUCLEATION' , 'FORSKOLIN INJECTION (BINOCULAR)' };
 

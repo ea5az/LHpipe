@@ -35,14 +35,21 @@ for ii = 1:length(fileList)
     [raster , ~] = TracesToSpikeTimes(readIn.means , thrTraces , params.trDiffRat*thrDiffTraces);
 
     sTab = tab(tab.id == expID & tab.id2 == expID2,:);
-    lAcc = [];
+    lAcc = []; nArr = [];
     for jj = 1:size(readIn.means , 2)
         for kk = 1:length(sTab.startTimes)
             cStartTime = sTab.startTimes(kk);
-            sRaster = raster()
-            if sTab.rates(kk) < params.lUpper
-                
-            else
+            cDur = sTab.durations(kk);
+            sRaster = raster(cStartTime:cStartTime+cDur , jj);
+            sMean = readIn.means(cStartTime:cStartTime+cDur , jj);
+            if sum(sRaster) > 0
+                if sTab.rates(kk) > params.lEventUpper
+                    lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];
+                    lAcc = [];
+                else
+                    if sTab.rates(kk) > 0.4 & sTab.rates(kk) > params.lEventUpper
+                    lAcc = [lAcc nanmax(sMean)];
+                end
                 
             end
         end

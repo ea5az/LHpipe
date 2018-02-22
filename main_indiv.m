@@ -35,7 +35,7 @@ for ii = 1:length(fileList)
     [raster , ~] = TracesToSpikeTimes(readIn.means , thrTraces , params.trDiffRat*thrDiffTraces);
 
     sTab = tab(tab.id == expID & tab.id2 == expID2,:);
-    lAcc = [];
+    lAcc = []; 
     for jj = 1:size(readIn.means , 2)
         for kk = 1:length(sTab.startTimes)
             cStartTime = sTab.startTimes(kk);
@@ -47,6 +47,7 @@ for ii = 1:length(fileList)
                     lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];
                     lAcc = [];
                 else
+
                     lAcc = [lAcc nanmax(sMean)];
                 end
                 
@@ -54,8 +55,9 @@ for ii = 1:length(fileList)
         end
     end
 end
-
-
+%%
+rhAmps = hAmps(~isnan(lAmps));
+rlAmps = lAmps(~isnan(lAmps));
 
 
 function fileList = getFileList(pathTo)
