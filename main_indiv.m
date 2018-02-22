@@ -35,7 +35,7 @@ for ii = 1:length(fileList)
     [raster , ~] = TracesToSpikeTimes(readIn.means , thrTraces , params.trDiffRat*thrDiffTraces);
 
     sTab = tab(tab.id == expID & tab.id2 == expID2,:);
-    lAcc = []; 
+    lAcc = []; nArr = [];
     for jj = 1:size(readIn.means , 2)
         for kk = 1:length(sTab.startTimes)
             cStartTime = sTab.startTimes(kk);
@@ -44,10 +44,12 @@ for ii = 1:length(fileList)
             sMean = readIn.means(cStartTime:cStartTime+cDur , jj);
             if sum(sRaster) > 0
                 if sTab.rates(kk) > params.lEventUpper
-                    lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];
+                    lAmps = [lAmps nanmean(lAcc)/nanmean(nArr)]; hAmps = [hAmps nanmax(sMean)];
                     lAcc = [];
                 else
-
+                    if sTab.rates(kk) > 0.4 & sTab.rates(kk) < 0.7
+                        nArr = [nArr nanmax(sMean)];
+                    end
                     lAcc = [lAcc nanmax(sMean)];
                 end
                 
