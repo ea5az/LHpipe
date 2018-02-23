@@ -209,7 +209,7 @@ function [] = GMMcluster(tab,params,flags)
     ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
     [~,idx] = max(ppb');
     subplot(2,1,2)
-    colormap(jet); scatter(tab.amps + 1 , tab.jitter , 20, idx, 'filled')%3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
+    colormap(jet); scatter(tab.rates ,tab.amps + 1 , 20, idx, 'filled')%3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
     xl = xlim(); yl = ylim(); %zl = zlim();
     hold on
     %f = fsurf(0.6);
