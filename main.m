@@ -205,7 +205,7 @@ function [] = GMMcluster(tab,params,flags)
     %zlabel('Participation rate')
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
 
-    obj = fitgmdist(X,3,'Replicates',20,'Options',options);
+    obj = fitgmdist(X,2,'Replicates',20,'Options',options);
     ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
     [~,idx] = max(ppb');
     subplot(2,1,2)
