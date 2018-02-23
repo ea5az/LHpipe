@@ -100,8 +100,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
     if flags.removeDoubleCellROI
         idMat = pdist2(readIn.pos,readIn.pos)+eye(size(readIn.pos,1))*100 < params.idLim;
         idMat = idMat - triu(idMat);
-        [row , col] = find(idMat);
-        cMeans = corr(means,means);
+        [~ , col] = find(idMat);
         means(:,col) = []; readIn.pos(col,:) = [];
     end
     
