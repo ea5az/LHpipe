@@ -481,7 +481,10 @@ function [] = barParRate(tab,params)
     end
     
     bar(jitBar);errorbar(jitBar,jitStd,'+');
+    [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
+
     xticks([1,2,3,4,5])
+    sigstar({[4.75,5.25]},p)
 
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
