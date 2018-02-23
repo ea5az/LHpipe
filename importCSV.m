@@ -95,6 +95,9 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
             F0means = means(:,mask); readIn.F0quant = mean(F0means(:));
             means(:,mask) = []; readIn.pos(mask,:) = [];
         end
+        readIn.sMeans = means;
+    end
+    if flags.removeDoubleCellROI
         idMat = pdist2(readIn.pos,readIn.pos)+eye(size(readIn.pos,1))*100 < params.idLim;
         idMat = idMat - triu(idMat);
         [row , col] = find(idMat);
@@ -106,10 +109,9 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
             if 1%corr(means(:,row),means(:,col)) > cThresh
                 means(:,col) = []; readIn.pos(col,:) = []; 
             end
-        end        
-
-        readIn.sMeans = means;
+        end  
     end
+    
     % add reduced ROIs in different color
     if flags.scatterPos
         scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
