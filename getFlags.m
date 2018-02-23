@@ -42,7 +42,7 @@ function flags = getFlags(DATASET)
     
     flags.skipSUBPAR = 1; % exclude bad animals (failed motion correction etc) (indicated in experiment sheet)
     
-    flags.plotVisible = 'off'; % display plots for the user
+    flags.plotVisible = 'on'; % display plots for the user
     flags.plotRast = 1; % display raster plot
     flags.corrFlag = 1; % compute correlation
     flags.cpdFlag = 0; % compute conditional probability distribution
