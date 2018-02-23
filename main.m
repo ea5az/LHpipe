@@ -37,7 +37,7 @@ end
 %%
 scatterAmpJitter(tab,params,flags , data);
 %%
-boxParRate(newTab,params)
+boxParRate(tab,params)
 %% 
 dendoParAmp(tab,params,flags,'average','euclidean')
 % 
