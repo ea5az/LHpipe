@@ -54,4 +54,6 @@ function flags = getFlags(DATASET)
     flags.addRegLine = 0; % add regression line to scatter plot
     
     flags.fixThreshPerExp = 1; % use same threshold for all experiments on one animal
+    
+    flags.removeDoubleCellROI = 1;
 end
