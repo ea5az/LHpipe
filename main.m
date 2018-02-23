@@ -455,11 +455,12 @@ function [] = barParRate(tab,params)
     figure();subplot(1,2,1);hold on
     
     labs =floor(tab.rates*(4.999));
+    ulabs = unique(labs);
     ampBar = [];
     ampStd = [];
-    for ii = length(labs)
-        ampBar = [ampBar , nanmean(tab.amps(labs == labs(ii)))];
-        ampStd = [ampStd , nanstd(tab.amps(labs == labs(ii)))];
+    for ii = length(ulabs)
+        ampBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)))];
+        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))];
 
     end
     
