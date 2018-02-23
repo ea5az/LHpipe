@@ -195,7 +195,7 @@ function [] = GMMcluster(tab,params,flags)
     X = [tab.amps + 1 , tab.jitter];% , tab.rates];
     options = statset('Display','final');
     obj = fitgmdist(X,1,'Replicates',20,'Options',options);
-    ppb = posterior(obj , [tab.amps + 1 , tab.jitter , tab.rates]);
+    ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
     [~,idx] = max(ppb');
     figure;
     subplot(2,1,1)
