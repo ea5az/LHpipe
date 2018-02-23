@@ -14,7 +14,7 @@
 %
 function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(raster , parRates , rateThresh , diffThresh , windowSize , duds, params)
     % Set constants
-    minSize = 3; IDBOUND = 10;
+    minSize = 6; IDBOUND = 10;
     N = size(raster,2);
     % Define yero-crossing handle
     zci = @(v) find(v(:).*circshift(v(:), [-1 0]) <= 0);% Returns Zero-Crossing Indices Of Argument Vector
