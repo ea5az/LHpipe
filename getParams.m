@@ -104,7 +104,7 @@ function params = getParams(DATASET)
     % How many ROIs to exclude at the edges
     params.EdgePix = 20;
     params.idLim = 15;
-    params.corrThresh = 95;
+    params.corrThresh = 90;
 
     params.nParRateWindow = 9; % naive participation rate window
 
