@@ -103,7 +103,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         cThresh = prctile(cMeans(:),params.corrThresh);
         if length(row) > 1
             for ii = 1:length(row)
-                corr(means(:,row),means(:,col))
+                corr(means(:,row(ii)),means(:,col(ii)))
                 if corr(means(:,row(ii)),means(:,col(ii))) > params.corrThresh
                     means(:,row(ii)) = []; readIn.pos(row(ii),:) = [];
                 end
