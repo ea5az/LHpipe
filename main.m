@@ -463,7 +463,7 @@ function [] = barParRate(tab,params)
         ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(len(tab.amps(labs == ulabs(ii))))];
     end
     
-    bar(ampBar);errorbar(ampBar,ampStd);
+    bar(ampBar);errorbar(ampBar,ampStd,'LineWidth',0);
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
