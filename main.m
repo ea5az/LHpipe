@@ -464,6 +464,7 @@ function [] = barParRate(tab,params)
     end
     
     bar(ampBar);errorbar(ampBar,ampStd,'+');
+    ylim([1,1.3])
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
