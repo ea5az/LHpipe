@@ -62,6 +62,7 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
                 %[~,idx] = find(dPr <= -diffThresh) + 1;
                 %idx =idx + 1;
             end
+            % if stille nothing found make event as long as window
             if isempty(idx)
                 evDurations(ii)  = windowSize ;
                 evDurationsFWHM(ii) = NaN;
