@@ -430,6 +430,10 @@ end
 
 function [] = boxParRate(tab,params)
     figure();subplot(1,2,1);hold on
+    IDXs = zeros(length(tab.amp),1);
+    for ii = 1 : length(tab.amps)
+        IDXs(ii) = tab.rates*10/2
+    end
     boxplot(tab.amps + 1 , floor(tab.rates*(5.999)));
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
