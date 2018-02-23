@@ -55,6 +55,8 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
             pr  = spR(evStartTime(ii)+minSize:evStartTime(ii)+windowSize);%parRates(evStartTime(ii)+minSize:evStartTime(ii)+windowSize);
             % find potential ends with negative rate of change
             idx = find( (pr <= params.endEventPR*rateThresh) .* (dPr < 0)) + minSize;
+            % if nothing found, just take first zero crossing of rate of
+            % change
             if isempty(idx)
                 idx = zci(dPr);
                 %[~,idx] = find(dPr <= -diffThresh) + 1;
