@@ -458,7 +458,7 @@ function [] = barParRate(tab,params)
     ulabs = unique(labs(~isnan(labs)));
     ampBar = [];
     ampStd = [];
-    for ii = length(ulabs)
+    for ii = 1:length(ulabs)
         ampBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)))];
         ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))];
     end
