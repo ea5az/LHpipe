@@ -101,6 +101,16 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         [row , col] = find(idMat);
         cMeans = corr(means,means);
         cThresh = prctile(cMeans(:),params.corrThresh);
+        if length(x) > 1
+            for ii = 1:length(row)
+                
+            end
+        else
+                    
+        end        
+        if corr(means(:,row),means(:,col)) > params.corrThresh
+            
+        end
         readIn.sMeans = means;
     end
     % add reduced ROIs in different color
