@@ -60,7 +60,8 @@ end
 %%
 rhAmps = hAmps(~isnan(lAmps));
 rlAmps = lAmps(~isnan(lAmps));
-
+[R,P,RL,RU] = corrcoef(rlAmps,rhAmps);
+ccoeff = R(1,2);
 figure()
 scatter(rlAmps,rhAmps ,45,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black'))
 lsline
