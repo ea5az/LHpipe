@@ -66,7 +66,7 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
             if isempty(idx)
                 evDurations(ii)  = windowSize ;
                 evDurationsFWHM(ii) = NaN;
-            else
+            else % if something found, take the last element of the first increasing sequence
                 eIDX = find(diff(idx)~=1);
                 if ~isempty(eIDX)
                     evDurations(ii) = idx(eIDX(1));
