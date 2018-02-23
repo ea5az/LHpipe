@@ -335,7 +335,7 @@ function [] = dendoParAmp(tab,params,flags,method,method2)
         mJitter(ii+1) = nanmean(tab.jitter(labs == ii));
         mPar(ii+1) = nanmean(tab.rates(labs == ii));
     end
-    L = linkage([mAmps mJitter],method,method2); dendrogram(L,'Reorder',1:10);
+    L = linkage([mAmps mJitter mPar],method,method2); dendrogram(L,'Reorder',1:10);
     xticklabels({'0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%'});
     title(sprintf('M1: %s , M2: %s',method , method2))
 end
