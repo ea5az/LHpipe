@@ -456,11 +456,12 @@ function [] = barParRate(tab,params)
     
     labs =floor(tab.rates*(4.999));
     ampBar = [];
+    ampStd = [];
     for ii = length(labs)
         ampBar = [ampBar , mean(tab.amps(labs == labs(ii)))]
     end
     
-    bar();
+    bar(ampBar);
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
