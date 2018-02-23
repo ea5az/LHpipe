@@ -35,11 +35,11 @@ for ii = 1:length(uID)
 end
 
 %%
-scatterAmpJitter(newTab,params,flags , data);
+scatterAmpJitter(savTab,params,flags , data);
 %%
-boxParRate(newTab,params)
+boxParRate(savTab,params)
 %%
-barParRate(newTab,params)
+barParRate(savTab,params)
 
 
 %% 
