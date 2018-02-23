@@ -209,13 +209,13 @@ function [] = GMMcluster(tab,params,flags)
     ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
     [~,idx] = max(ppb');
     subplot(2,1,2)
-    colormap(jet); scatter3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
-    xl = xlim(); yl = ylim(); zl = zlim();
+    colormap(jet); scatter(tab.amps + 1 , tab.jitter , 20, idx, 'filled')%3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
+    xl = xlim(); yl = ylim(); %zl = zlim();
     hold on
-    f = fsurf(0.6);
-    alpha(f,0.25)
-    f = fsurf(0.8);
-    alpha(f,0.25)
+    %f = fsurf(0.6);
+    %alpha(f,0.25)
+    %f = fsurf(0.8);
+    %alpha(f,0.25)
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
     xlim(xl);ylim(yl);zlim(zl);
 
