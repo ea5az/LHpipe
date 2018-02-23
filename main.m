@@ -37,9 +37,9 @@ end
 %%
 scatterAmpJitter(newTab,params,flags , data);
 %%
-boxParRate(savTab,params)
+boxParRate(newTab,params)
 %%
-barParRate(savTab,params)
+barParRate(newTab,params)
 
 
 %% 
