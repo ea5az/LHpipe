@@ -453,7 +453,13 @@ end
 
 function [] = barParRate(tab,params)
     figure();subplot(1,2,1);hold on
-    boxplot(tab.amps + 1 , floor(tab.rates*(4.999)));
+    
+    labs =floor(tab.rates*(4.999));
+    for ii = 1:5
+        
+    end
+    
+    bar(tab.amps + 1 , );
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
