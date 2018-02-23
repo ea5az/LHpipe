@@ -95,7 +95,6 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
             F0means = means(:,mask); readIn.F0quant = mean(F0means(:));
             means(:,mask) = []; readIn.pos(mask,:) = [];
         end
-        scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
         idMat = pdist2(readIn.pos,readIn.pos)+eye(size(readIn.pos,1))*100 < params.idLim;
         idMat = idMat - triu(idMat);
         [row , col] = find(idMat);
