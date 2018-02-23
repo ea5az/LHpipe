@@ -904,7 +904,7 @@ function [] = scatterAmpJitter(tab,params,flags , data)
     xlabel('Participation Rate'); ylabel('Jitter'); xlim([0,1]);
     if nargin > 3
         hold on 
-        scatter(data(:,7)/100,data(:,5),20,'red','alpha',0.5,'filled')
+        scatter(data(:,7)/100,data(:,5),20,'red','MarkerFaceAlpha',0.5,'filled')
     end
 %     print(sprintf('fig_Fried/%sScatter','V1'),'-dpng')
 
