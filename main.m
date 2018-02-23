@@ -217,7 +217,7 @@ function [] = GMMcluster(tab,params,flags)
     %f = fsurf(0.8);
     %alpha(f,0.25)
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
-    xlim(xl);ylim(yl);zlim(zl);
+    xlim(xl);ylim(yl);%zlim(zl);
 
 end
 
