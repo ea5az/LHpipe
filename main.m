@@ -199,7 +199,7 @@ function [] = GMMcluster(tab,params,flags)
     [~,idx] = max(ppb');
     figure;
     subplot(2,1,1)
-    colormap(jet); scatter(tab.amps + 1 , tab.jitter ,20,rgb('darkblue'), 'filled');%3(tab.amps + 1 , tab.jitter , tab.rates ,20,rgb('darkblue'), 'filled')
+    colormap(jet); scatter(tab.rates , tab.amps + 1 ,20,rgb('darkblue'), 'filled');%3(tab.amps + 1 , tab.jitter , tab.rates ,20,rgb('darkblue'), 'filled')
     xlabel('Amplitude (F/F0)')
     ylabel(sprintf('Jitter \n'))
     %zlabel('Participation rate')
