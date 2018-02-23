@@ -474,7 +474,16 @@ function [] = barParRate(tab,params)
         end
     end
     subplot(1,2,2)
-    boxplot(tab.jitter, floor(tab.rates*(4.999)));
+
+    jitBar = [];
+    ampStd = [];
+    for ii = 1:length(ulabs)
+        jitBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)))];
+        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(len(tab.amps(labs == ulabs(ii))))];
+    end
+    
+    bar(ampBar);errorbar(ampBar,ampStd,'LineWidth',0);
+    
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Jitter (s)')
