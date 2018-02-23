@@ -682,6 +682,7 @@ function [] =  IEIs(tab , params)
     xlim([0,300])
     legend({'Participation 20-80%','Participation 80-100%'})
     legend('boxoff')
+    xlabel('IEI length')
 end
 
 function [ccoeff] = LHrelation(LHtab,params,plotFlag)
