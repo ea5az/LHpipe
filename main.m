@@ -455,7 +455,7 @@ function [] = barParRate(tab,params)
     figure();subplot(1,2,1);hold on
     
     labs =floor(tab.rates*(4.999));
-    ulabs = unique(labs);
+    ulabs = unique(labs(~isnan(labs)));
     ampBar = [];
     ampStd = [];
     for ii = length(ulabs)
