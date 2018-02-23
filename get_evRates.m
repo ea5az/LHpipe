@@ -73,6 +73,7 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
                 else
                     evDurations(ii) = idx(end);
                 end
+                % same principle for the fwhm duration
                 tmp = zci(pr - (min(pr)+max(pr))/2);
                 if pr(tmp(1)) >= pr(1)
                     evDurationsFWHM(ii) = tmp(end)-tmp(1);
