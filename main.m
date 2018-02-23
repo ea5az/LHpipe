@@ -467,7 +467,7 @@ function [] = barParRate(tab,params)
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
-    subplot(1,2,2) hold on
+    subplot(1,2,2); hold on
 
     jitBar = [];
     jitStd = [];
