@@ -20,10 +20,12 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
     zci = @(v) find(v(:).*circshift(v(:), [-1 0]) <= 0);% Returns Zero-Crossing Indices Of Argument Vector
 
     % Determine 'spikes' in participation rate
+    % smooth and renormalize so that thresholds apply
     spR = smoothdata(parRates);
     spR = spR*(max(parRates)/max(spR));
     dspR = diff(spR);
     dspR = dspR*(max(diff(parRates))/max(dspR));
+    % detect events by looking at threshold and positive change
     evDetectMask = (spR > rateThresh) .* [dspR  > diffThresh 0];
     evStartTime = find(evDetectMask);
     if isempty(evStartTime)
