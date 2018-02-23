@@ -463,7 +463,7 @@ function [] = barParRate(tab,params)
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
-    for ii = 1:4
+    for ii = 0:4
         [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999)) == ii),tab.amps(floor(tab.rates*(4.999)) == ii+1));
         if h == 1        
            sigstar({[ii,ii+1]},p*4)
