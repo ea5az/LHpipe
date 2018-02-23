@@ -65,7 +65,7 @@ figure()
 scatter(rlAmps,rhAmps ,45,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black'))
 lsline
 %colorbar
-title(sprintf('H-event: %2.0f , correlation: %1.2f',params.lEventUpper, ccoeff))
+title(sprintf('H-event: %0.2f , correlation: %1.2f',params.lEventUpper, ccoeff))
 xlabel('Mean L-event amplitude ^{F}/_{F0}')
 ylabel('H-event amplitude ^{F}/_{F0}')
 
