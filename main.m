@@ -43,7 +43,7 @@ barParRate(newTab,params)
 
 
 %% 
-dendoParAmp(newTab,params,flags,'complete','euclidean')
+dendoParAmp(savTab,params,flags,'complete','euclidean')
 % 
 %%
 GMMcluster(tab,params,flags)
