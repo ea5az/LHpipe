@@ -120,6 +120,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
     % add reduced ROIs in different color
     if flags.scatterPos
         scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
+        axis equal
 %         print(['fig_Fried/ROI/' expName '.png'],'-dpng')
         close(f)
     end
