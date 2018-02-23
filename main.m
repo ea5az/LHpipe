@@ -12,8 +12,6 @@ DATASET = 'Fried';
 params = getParams(DATASET); flags = getFlags(DATASET);
 [savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
 
-%%
-% 0 = V1 , 1 = S1 , 2 = RL , 3 = AL
 params.COND = 0;
 tab = savTab(logical((savTab.rates > params.lEventLower) + isnan(savTab.rates)) , :);
 tab = tab(logical((tab.cond == params.COND) + (isnan(tab.cond))) , :); pcaTab = savPcaTab(savPcaTab.cond == params.COND , :);
