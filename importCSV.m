@@ -103,14 +103,16 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         cThresh = prctile(cMeans(:),params.corrThresh);
         if length(x) > 1
             for ii = 1:length(row)
-                means(:,row(ii)) = []; readIn.pos(row(ii),:) = [];
+                if corr(means(:,row(ii)),means(:,col(ii))) > params.corrThresh
+                    means(:,row(ii)) = []; readIn.pos(row(ii),:) = [];
+                end
             end
         else
-            means(:,row(ii)) = []; readIn.pos(row(ii),:) = [];        
+            if corr(means(:,row),means(:,col)) > params.corrThresh
+                means(:,row) = []; readIn.pos(row,:) = []; 
+            end
         end        
-        if corr(means(:,row),means(:,col)) > params.corrThresh
-            
-        end
+
         readIn.sMeans = means;
     end
     % add reduced ROIs in different color
