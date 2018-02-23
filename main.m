@@ -57,7 +57,7 @@ GMMcluster(tab,params,flags)
 % pause(1)
 % durationFWHMplot(tab,params);
 % pause(1)
-%pcaPlot(pcaTab,params);
+pcaPlot(pcaTab,params);
 % pause(1)
 IEIs(tab , params);
 % %% 
@@ -192,34 +192,32 @@ function ccoeffs = LHrelationVaryDef(tab,params)
 end
 
 function [] = GMMcluster(tab,params,flags)
-    X = [tab.amps + 1 , tab.jitter];% , tab.rates];
+    X = [tab.amps + 1 , tab.jitter , tab.rates];
     options = statset('Display','final');
     obj = fitgmdist(X,1,'Replicates',20,'Options',options);
-    ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
+    ppb = posterior(obj , [tab.amps + 1 , tab.jitter , tab.rates]);
     [~,idx] = max(ppb');
     figure;
     subplot(2,1,1)
-    colormap(jet); scatter(tab.rates , tab.amps + 1 ,20,rgb('darkblue'), 'filled');%3(tab.amps + 1 , tab.jitter , tab.rates ,20,rgb('darkblue'), 'filled')
+    colormap(jet); scatter3(tab.amps + 1 , tab.jitter , tab.rates ,20,rgb('darkblue'), 'filled')
     xlabel('Amplitude (F/F0)')
     ylabel(sprintf('Jitter \n'))
-    %zlabel('Participation rate')
+    zlabel('Participation rate')
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
 
-    obj = fitgmdist(X,2,'Replicates',20,'Options',options);
-    ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
+    obj = fitgmdist(X,3,'Replicates',20,'Options',options);
+    ppb = posterior(obj , [tab.amps + 1 , tab.jitter , tab.rates]);
     [~,idx] = max(ppb');
     subplot(2,1,2)
-    colormap(jet); scatter(tab.rates ,tab.amps + 1 , 20, idx, 'filled')%3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
-    xl = xlim(); yl = ylim(); %zl = zlim();
+    colormap(jet); scatter3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
+    xl = xlim(); yl = ylim(); zl = zlim();
     hold on
-    %f = fsurf(0.6);
-    %alpha(f,0.25)
-    %f = fsurf(0.8);
-    %alpha(f,0.25)
-    xlabel('Amplitude (F/F0)')
-    ylabel(sprintf('Jitter \n'))
+    f = fsurf(0.6);
+    alpha(f,0.25)
+    f = fsurf(0.8);
+    alpha(f,0.25)
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
-    xlim(xl);ylim(yl);%zlim(zl);
+    xlim(xl);ylim(yl);zlim(zl);
 
 end
 
