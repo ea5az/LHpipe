@@ -101,7 +101,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         [row , col] = find(idMat);
         cMeans = corr(means,means);
         cThresh = prctile(cMeans(:),params.corrThresh);
-        if length(x) > 1
+        if length(row) > 1
             for ii = 1:length(row)
                 if corr(means(:,row(ii)),means(:,col(ii))) > params.corrThresh
                     means(:,row(ii)) = []; readIn.pos(row(ii),:) = [];
