@@ -216,6 +216,8 @@ function [] = GMMcluster(tab,params,flags)
     %alpha(f,0.25)
     %f = fsurf(0.8);
     %alpha(f,0.25)
+    xlabel('Amplitude (F/F0)')
+    ylabel(sprintf('Jitter \n'))
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
     xlim(xl);ylim(yl);%zlim(zl);
 
