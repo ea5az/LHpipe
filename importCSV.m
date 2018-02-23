@@ -100,7 +100,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
     % add reduced ROIs in different color
     if flags.scatterPos
         scatter(readIn.pos(:,1),readIn.pos(:,2),'filled')
-        print(['fig_Fried/ROI/' expName '.png'],'-dpng')
+%         print(['fig_Fried/ROI/' expName '.png'],'-dpng')
         close(f)
     end
     % normalize each cell by its own F0
