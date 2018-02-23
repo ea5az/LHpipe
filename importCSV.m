@@ -95,6 +95,8 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
             F0means = means(:,mask); readIn.F0quant = mean(F0means(:));
             means(:,mask) = []; readIn.pos(mask,:) = [];
         end
+        
+        idMat = pdist2(readIn.pos,readIn.pos)+eye(size(readIn.pos,1))*100 < params.idLim);
         readIn.sMeans = means;
     end
     % add reduced ROIs in different color
