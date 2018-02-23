@@ -39,7 +39,7 @@ scatterAmpJitter(tab,params,flags)% , data);
 %%
 boxParRate(tab,params)
 %% 
-dendoParAmp(tab,params,flags,'mean','euclidean')
+dendoParAmp(tab,params,flags,'average','euclidean')
 % 
 %%
 GMMcluster(tab,params,flags)
