@@ -479,10 +479,10 @@ function [] = barParRate(tab,params)
     jitStd = [];
     for ii = 1:length(ulabs)
         jitBar = [jitBar , nanmean(tab.jitter(labs == ulabs(ii)))];
-        ampStd = [ampStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(len(tab.jitter(labs == ulabs(ii))))];
+        jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(len(tab.jitter(labs == ulabs(ii))))];
     end
     
-    bar(jitBar);errorbar(ampBar,ampStd,'LineWidth',0);
+    bar(jitBar);errorbar(ampBar,jitStd,'LineWidth',0);
     
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
