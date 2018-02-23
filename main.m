@@ -57,7 +57,7 @@ GMMcluster(tab,params,flags)
 % pause(1)
 % durationFWHMplot(tab,params);
 % pause(1)
-pcaPlot(pcaTab,params);
+% pcaPlot(pcaTab,params);
 % pause(1)
 IEIs(tab , params);
 % %% 
