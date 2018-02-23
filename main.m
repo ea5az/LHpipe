@@ -458,7 +458,9 @@ function [] = barParRate(tab,params)
     ampBar = [];
     ampStd = [];
     for ii = length(labs)
-        ampBar = [ampBar , mean(tab.amps(labs == labs(ii)))]
+        ampBar = [ampBar , mean(tab.amps(labs == labs(ii)))];
+        ampStd = [ampStd , mean(tab.amps(labs == labs(ii)))];
+
     end
     
     bar(ampBar);
