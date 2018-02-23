@@ -99,6 +99,8 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         idMat = pdist2(readIn.pos,readIn.pos)+eye(size(readIn.pos,1))*100 < params.idLim;
         idMat = idMat - triu(idMat);
         [row , col] = find(idMat);
+        cMeans = corr(means,means);
+        cThresh = prctile(cMeans(:),params.corrThresh);
         readIn.sMeans = means;
     end
     % add reduced ROIs in different color
