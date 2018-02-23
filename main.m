@@ -11,7 +11,7 @@ disp('Starting.')
 DATASET = 'Fried';
 params = getParams(DATASET); flags = getFlags(DATASET);
 [savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
-
+%%
 params.COND = 0;
 tab = savTab(logical((savTab.rates > params.lEventLower) + isnan(savTab.rates)) , :);
 tab = tab(logical((tab.cond == params.COND) + (isnan(tab.cond))) , :); pcaTab = savPcaTab(savPcaTab.cond == params.COND , :);
@@ -42,8 +42,8 @@ boxParRate(tab,params)
 dendoParAmp(tab,params,flags,'median','euclidean')
 % 
 %%
-% GMMcluster(tab,params,flags)
-% %%
+GMMcluster(tab,params,flags)
+%%
 % pause(1)
 % numAnimalsBar(tab);
 % pause(1)
