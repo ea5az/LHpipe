@@ -481,7 +481,8 @@ function [] = barParRate(tab,params)
     end
     
     bar(jitBar);errorbar(jitBar,jitStd,'+');
-    
+    xticks([1,2,3,4,5])
+
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Jitter (s)')
