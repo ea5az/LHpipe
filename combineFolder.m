@@ -66,8 +66,8 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(raster , ParRate ,...
             LOWERBOUND , prctile(diff(ParRate(:)),params.diffEvRatePCT) , ceil(params.evRateWindow*readIn.dT/0.13) , duds , params);
         if flags.plotRast
-            plotRast(smoothdata(raster,1,'gaussian',params.pcaSmoothWindowSize),readIn.means,evStartTime,evDurations,evRates,ParRate , fileStr , params,flags);
-        end
+            plotRast(raster,readIn.means,evStartTime,evDurations,evRates,ParRate , fileStr , params,flags);
+        end%smoothdata(raster,1,'gaussian',params.pcaSmoothWindowSize),
         
         % extract amplitudes and jitter
         if flags.ampF0Flag
@@ -159,7 +159,7 @@ end
 function [] = plotRast(raster,roiVals,evStartTime,evDurations,evRates,ParRate , file , params,flags)
     f = figure('units','normalized','outerposition',[0 0 1 1],'visible',flags.plotVisible);
     subtightplot(2,1,1)
-    plot(roiVals./repmat(max(roiVals,[],1),size(roiVals,1),1) +repmat(size(roiVals,2):-1:1,size(roiVals,1),1),'-','color',rgb('black'))
+    plot(smoothdata(roiVals)./repmat(max(roiVals,[],1),size(roiVals,1),1) +repmat(size(roiVals,2):-1:1,size(roiVals,1),1),'-','color',rgb('black'))
     xlim([0, size(roiVals,1)]); ylim([0 , size(roiVals,2)+1])
     subtightplot(2,1,2)
 
