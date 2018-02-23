@@ -192,7 +192,7 @@ function ccoeffs = LHrelationVaryDef(tab,params)
 end
 
 function [] = GMMcluster(tab,params,flags)
-    X = [tab.amps + 1 , tab.jitter , tab.rates];
+    X = [tab.amps + 1 , tab.jitter];% , tab.rates];
     options = statset('Display','final');
     obj = fitgmdist(X,1,'Replicates',20,'Options',options);
     ppb = posterior(obj , [tab.amps + 1 , tab.jitter , tab.rates]);
