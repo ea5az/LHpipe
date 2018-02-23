@@ -873,7 +873,7 @@ function [] = scatterAmpJitter(tab,params,flags , data)
     
     if nargin > 3
         hold on 
-        scatter(data(:,7)/100,data(:,6),10,'red');%,'filled')
+        scatter(data(:,7)/100,data(:,6),20,'red');%,'filled')
     end
         
     if flags.addRegLine
