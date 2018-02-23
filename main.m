@@ -35,7 +35,7 @@ for ii = 1:length(uID)
 end
 
 %%
-scatterAmpJitter(savTab,params,flags , data);
+scatterAmpJitter(tab,params,flags , data);
 %%
 boxParRate(savTab,params)
 %%
