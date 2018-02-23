@@ -460,7 +460,7 @@ function [] = barParRate(tab,params)
     ampStd = [];
     for ii = 1:length(ulabs)
         ampBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)))];
-        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(len(tab.amps(labs == ulabs(ii))))];
+        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(length(tab.amps(labs == ulabs(ii))))];
     end
     
     bar(ampBar);errorbar(ampBar,ampStd,'LineWidth',0);
@@ -479,7 +479,7 @@ function [] = barParRate(tab,params)
     jitStd = [];
     for ii = 1:length(ulabs)
         jitBar = [jitBar , nanmean(tab.jitter(labs == ulabs(ii)))];
-        jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(len(tab.jitter(labs == ulabs(ii))))];
+        jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(length(tab.jitter(labs == ulabs(ii))))];
     end
     
     bar(jitBar);errorbar(ampBar,jitStd,'LineWidth',0);
