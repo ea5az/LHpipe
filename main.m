@@ -206,7 +206,7 @@ function [] = GMMcluster(tab,params,flags)
     title(sprintf('AIC: %4.0f , BIC: %4.0f',obj.AIC , obj.BIC))
 
     obj = fitgmdist(X,3,'Replicates',20,'Options',options);
-    ppb = posterior(obj , [tab.amps + 1 , tab.jitter , tab.rates]);
+    ppb = posterior(obj , [tab.amps + 1 , tab.jitter]);% , tab.rates]);
     [~,idx] = max(ppb');
     subplot(2,1,2)
     colormap(jet); scatter3(tab.amps + 1 , tab.jitter , tab.rates ,20, idx, 'filled')
