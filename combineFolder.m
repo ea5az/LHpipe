@@ -61,6 +61,8 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
 
         % get naive participation rate
         [ParRate , duds] = get_ParRate(raster , params.nParRateWindow , params.dudslim);
+        duds = 0;
+        
         % convert to event rate 0.2
         [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(raster , ParRate ,...
             LOWERBOUND , prctile(diff(ParRate(:)),params.diffEvRatePCT) , ceil(params.evRateWindow*readIn.dT/0.13) , duds , params);
