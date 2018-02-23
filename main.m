@@ -464,7 +464,7 @@ function [] = barParRate(tab,params)
     end
     
     bar(ampBar);errorbar(ampBar,ampStd,'+');
-    [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 5),tab.amps(floor(tab.rates*(4.999)) == 5));
+    [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
     sigstar({[4,5]},p)
     ylim([1,1.3])
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
