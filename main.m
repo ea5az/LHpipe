@@ -482,7 +482,7 @@ function [] = barParRate(tab,params)
         jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(length(tab.jitter(labs == ulabs(ii))))];
     end
     
-    bar(jitBar);errorbar(ampBar,jitStd,'+');
+    bar(jitBar);errorbar(jitBar,jitStd,'+');
     
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
