@@ -108,7 +108,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
                 end
             end
         else
-            if corr(means(:,row),means(:,col)) > params.corrThresh
+            if corr(means(:,row),means(:,col)) > cThresh
                 means(:,row) = []; readIn.pos(row,:) = []; 
             end
         end        
