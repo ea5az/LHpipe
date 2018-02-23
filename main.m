@@ -459,8 +459,8 @@ function [] = barParRate(tab,params)
     ampBar = [];
     ampStd = [];
     for ii = 1:length(ulabs)
-        ampBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)))];
-        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(length(tab.amps(labs == ulabs(ii))))];
+        ampBar = [ampBar , nanmean(tab.amps(labs == ulabs(ii)) - 1)];
+        ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)) - 1)/sqrt(length(tab.amps(labs == ulabs(ii))))];
     end
     
     bar(ampBar);errorbar(ampBar,ampStd,'+');
