@@ -50,8 +50,10 @@ function  [evRates , evDurations ,evDurationsFWHM , evStartTime] = get_evRates(r
             evDurations(ii) = length(parRates) - evStartTime(ii);
             evDurationsFWHM(ii) = NaN;
         else
+            % look at maximum window size initially
             dPr = dspR(evStartTime(ii)+minSize-1:evStartTime(ii)+windowSize-1);%diff(parRates(evStartTime(ii)+minSize:evStartTime(ii)+windowSize));
             pr  = spR(evStartTime(ii)+minSize:evStartTime(ii)+windowSize);%parRates(evStartTime(ii)+minSize:evStartTime(ii)+windowSize);
+            % find potential ends with negative rate of change
             idx = find( (pr <= params.endEventPR*rateThresh) .* (dPr < 0)) + minSize;
             if isempty(idx)
                 idx = zci(dPr);
