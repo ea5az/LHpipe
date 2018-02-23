@@ -103,7 +103,7 @@ function params = getParams(DATASET)
     params.FilterA = 0.4; %0.2;
     % How many ROIs to exclude at the edges
     params.EdgePix = 20;
-    params.idLim = 15;
+    params.idLim = 20;
     params.corrThresh = 80;
 
     params.nParRateWindow = 9; % naive participation rate window
