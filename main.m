@@ -948,17 +948,17 @@ function [] = scatterAmpJitter(tab,params,flags , data)
         plot(dp , dp*b(2) + b(1),'b','LineWidth',2)
     end
     
-    if flags.addRegLine
-        hold on;
-        X = [ones(length(partvsamp.Participation(partvsamp.Participation < params.lEventUpper)),1) partvsamp.Participation(partvsamp.Participation < params.lEventUpper)];
-        b = X\(partvsamp.FF0(partvsamp.Participation < params.lEventUpper));
-        dp = linspace(params.lEventLower,params.lEventUpper);
-        plot(dp , dp*b(2) + b(1),'r','LineWidth',2)
-        X = [ones(length(partvsamp.Participation(partvsamp.Participation > params.lEventUpper)),1) partvsamp.Participation(partvsamp.Participation > params.lEventUpper)];
-        b = X\(partvsamp.FF0(partvsamp.Participation > params.lEventUpper));
-        dp = linspace(params.lEventUpper,1);
-        plot(dp , dp*b(2) + b(1),'b','LineWidth',2)
-    end
+%     if flags.addRegLine
+%         hold on;
+%         X = [ones(length(partvsamp.Participation(partvsamp.Participation < params.lEventUpper)),1) partvsamp.Participation(partvsamp.Participation < params.lEventUpper)];
+%         b = X\(partvsamp.FF0(partvsamp.Participation < params.lEventUpper));
+%         dp = linspace(params.lEventLower,params.lEventUpper);
+%         plot(dp , dp*b(2) + b(1),'r','LineWidth',2)
+%         X = [ones(length(partvsamp.Participation(partvsamp.Participation > params.lEventUpper)),1) partvsamp.Participation(partvsamp.Participation > params.lEventUpper)];
+%         b = X\(partvsamp.FF0(partvsamp.Participation > params.lEventUpper));
+%         dp = linspace(params.lEventUpper,1);
+%         plot(dp , dp*b(2) + b(1),'b','LineWidth',2)
+%     end
     subplot(1,2,2);
     colormap(jet);scatter(tab.rates,tab.jitter,params.ScatterPointSize,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black')); 
     xlabel('Participation Rate'); ylabel('Jitter'); xlim([0,1]);
