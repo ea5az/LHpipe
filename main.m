@@ -19,7 +19,6 @@ tab = tab(logical((tab.cond == params.COND) + (isnan(tab.cond))) , :); pcaTab = 
 %%
 tab.amps = tab.amps + 1;
 
-
 %%
 
 uID = unique(tab.id(~isnan(tab.id)));
