@@ -39,8 +39,6 @@ scatterAmpJitter(tab,params,flags);% , data);
 boxParRate(savTab,params)
 %%
 barParRate(savTab2,params)
-
-
 %% 
 dendoParAmp(tab,params,flags,'single','euclidean')
 % 
