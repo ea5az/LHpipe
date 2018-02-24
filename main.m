@@ -464,8 +464,8 @@ function [] = barParRate(tab,params)
         ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(length(tab.amps(labs == ulabs(ii))))];
     end
     
-    bar(ampBar(1:4),'FaceColor',rgb('darkgray'));bar(5,ampBar(5),'FaceColor',rgb('red'));errorbar(ampBar,ampStd,'+','color',rgb('black'));
-    [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
+    bar(ampBar(1:3),'FaceColor',rgb('darkgray'));bar(4,ampBar(4),'FaceColor',rgb('red'));errorbar(ampBar,ampStd,'+','color',rgb('black'));
+    %[h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
     ylim([1,1.3])
     %sigstar({[4.75,5.25]},p)
     xticks([1,2,3,4,5])
@@ -481,13 +481,13 @@ function [] = barParRate(tab,params)
         jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(length(tab.jitter(labs == ulabs(ii))))];
     end
     
-    bar(jitBar(1:4),'FaceColor',rgb('darkgray'));bar(5,jitBar(5),'FaceColor',rgb('red'));errorbar(jitBar,jitStd,'+','color',rgb('black'));
-    [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
+    bar(jitBar(1:3),'FaceColor',rgb('darkgray'));bar(4,jitBar(4),'FaceColor',rgb('red'));errorbar(jitBar,jitStd,'+','color',rgb('black'));
+    %[h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
 
-    xticks([1,2,3,4,5])
+    xticks([1,2,3,4])%,5])
     %sigstar({[4.75,5.25]},p)
 
-    xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
+    xticklabels({'20-40%','40-60%','60-80%','80-100%'});%{'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Jitter (s)')
 end
