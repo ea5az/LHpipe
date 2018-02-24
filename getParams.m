@@ -100,7 +100,7 @@ function params = getParams(DATASET)
     params.dudslim = 1;
 
     % paramter a for high/ lowpass filter
-    params.FilterA = 0.2;%0.4; %0.2;
+    params.FilterA = 0.3;%0.4; %0.2;
     % How many ROIs to exclude at the edges
     params.EdgePix = 20;
     params.idLim = 20;
