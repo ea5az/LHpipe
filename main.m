@@ -677,7 +677,7 @@ function [] =  IEIs(tab , params)
     Lbins(1:2:end) = NLIEI;
     Hbins(2:2:end) = NHIEI;
 
-    histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
+    h1 = histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
     histogram('BinEdges',dx,'BinCounts',Hbins(1:end-1),'Normalization','Probability','FaceColor',rgb('red'))
     xlim([0,300])
     legend({'Participation 20-80%','Participation 80-100%'})
