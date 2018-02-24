@@ -1,4 +1,3 @@
-LHrelation(tab,params);
 
 
 %%
