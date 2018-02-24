@@ -939,11 +939,11 @@ function [] = scatterAmpJitter(tab,params,flags , data)
     if flags.addRegLine
         hold on;
         X = [ones(length(tab.rates(tab.rates < params.lEventUpper)),1) tab.rates(tab.rates < params.lEventUpper)];
-        b = X\(tab.amps(tab.rates < params.lEventUpper)+1);
+        b = X\(tab.amps(tab.rates < params.lEventUpper));
         dp = linspace(params.lEventLower,params.lEventUpper);
         plot(dp , dp*b(2) + b(1),'r','LineWidth',2)
         X = [ones(length(tab.rates(tab.rates > params.lEventUpper)),1) tab.rates(tab.rates > params.lEventUpper)];
-        b = X\(tab.amps(tab.rates > params.lEventUpper)+1);
+        b = X\(tab.amps(tab.rates > params.lEventUpper));
         dp = linspace(params.lEventUpper,1);
         plot(dp , dp*b(2) + b(1),'b','LineWidth',2)
     end
