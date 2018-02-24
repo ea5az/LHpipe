@@ -142,7 +142,7 @@ function [W] = ARMAplot(ARMAtab ,params, plotOn)
         xlabel('Autoregressive lag')
         ylabel('Information Criterion')
         legend('AIC','BIC')
-        print(sprintf('fig_ARMA/%sAICBIC',''),'-dpng')
+        %print(sprintf('fig_ARMA/%sAICBIC',''),'-dpng')
     end
     %mBID = 3*mBID;
     Mdl = varm(M , mBID);
