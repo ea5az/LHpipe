@@ -479,7 +479,7 @@ function [] = barParRate(tab,params)
         jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(length(tab.jitter(labs == ulabs(ii))))];
     end
     
-    bar(jitBar,'FaceColor',rgb('darkgray'));errorbar(jitBar,jitStd,'+');
+    bar(jitBar,'FaceColor',rgb('darkgray'));errorbar(jitBar,jitStd,'+','color',rgb('black'));
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
 
     xticks([1,2,3,4,5])
