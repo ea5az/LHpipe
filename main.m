@@ -731,10 +731,18 @@ function [ccoeff] = LHrelation(LHtab,params,plotFlag,markovFlag)
         else
             bID = find(isnan(slice));
             if isempty(bID)
-                lAmp(ii - 1) = mean(slice);
+                if markovFlag
+                    lAmp(ii - 1) = slice(end);                    
+                else
+                    lAmp(ii - 1) = mean(slice);
+                end
             else
-                bID = bID(end);
-                lAmp(ii - 1) = mean(slice(bID+1:end));
+                if markovFlag
+                    lAmp(ii - 1) = slice(end);                                        
+                else
+                    bID = bID(end);        
+                    lAmp(ii - 1) = mean(slice(bID+1:end));
+                end
             end
         end
     end
