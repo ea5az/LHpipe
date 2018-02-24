@@ -110,5 +110,5 @@ function params = getParams(DATASET)
 
     params.shuffleNum = 1000;   % number of repetitions for AR shuffle analysis
     
-    params.ScatterPointSize = 15; % plotting scatter point size
+    params.ScatterPointSize = 5; % plotting scatter point size
 end
