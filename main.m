@@ -465,7 +465,7 @@ function [] = barParRate(tab,params)
     bar(ampBar);errorbar(ampBar,ampStd,'+');
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
     ylim([1,1.3])
-    sigstar({[4.75,5.25]},p)
+    %sigstar({[4.75,5.25]},p)
     xticks([1,2,3,4,5])
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
@@ -483,7 +483,7 @@ function [] = barParRate(tab,params)
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
 
     xticks([1,2,3,4,5])
-    sigstar({[4.75,5.25]},p)
+    %sigstar({[4.75,5.25]},p)
 
     xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
