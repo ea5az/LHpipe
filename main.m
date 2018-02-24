@@ -743,7 +743,7 @@ function [ccoeff] = LHrelation(LHtab,params,plotFlag)
     rIDs = IDs(~isnan(lAmp));
     rAGES = AGEs(~isnan(lAmp));
     
-    [R,P,RL,RU] = corrcoef(rlAmp,rhAmp)
+    [R,P,RL,RU] = corrcoef(rlAmp(~isnan(rhAmp)),rhAmp(~isnan(rhAmp))
     ccoeff = R(1,2);
     if plotFlag
         figure()
