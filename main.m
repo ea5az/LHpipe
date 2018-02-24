@@ -32,7 +32,7 @@ for ii = 1:length(uID)
     uID2 = unique(sTab.id2);
     for jj = 1:length(uID2)
         ssTab = sTab(sTab.id2 == uID2(jj),:);
-        nF0 = nanmean(ssTab.amps(logical((ssTab.rates > 0.2).*(ssTab.rates < 0.8))));
+        nF0 = nanmean(ssTab.amps(logical((ssTab.rates > 0.4).*(ssTab.rates < 0.6))));
         tab.amps(logical((tab.id == uID(ii)).*(tab.id2 == uID2(jj)))) = ssTab.amps/nF0;
     end
 end
