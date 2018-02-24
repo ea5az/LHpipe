@@ -45,9 +45,9 @@ for ii = 1:length(fileList)
             if sum(sRaster) > 0
                 if sTab.rates(kk) > params.lEventUpper
                     if length(lAcc) > 1
-                        lAmps = [lAmps nanmean(lAcc)/nanmean(nArr)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
+                        lAmps = [lAmps lAcc(end)/nanmean(nArr)]; hAmps = [hAmps nanmax(sMean)];%nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
                     else
-                        lAmps = [lAmps nanmean(lAcc)/nanmean(nArr)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
+                        lAmps = [lAmps lAcc/nanmean(nArr)]; hAmps = [hAmps nanmax(sMean)];%nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
                     end
                     lAcc = [];
                 else
