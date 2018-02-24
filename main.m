@@ -1,4 +1,4 @@
-scatterAmpJitter(savTab2,params,flags);% , data);
+scatterAmpJitter(tab,params,flags);% , data);
 
 
 %%
