@@ -469,7 +469,7 @@ function [] = barParRate(tab,params)
     ylim([1,1.3])
     %sigstar({[4.75,5.25]},p)
     xticks([1,2,3,4,5])
-    xticklabels({'0-20%','20-40%','40-60%','60-80%','80-100%'});
+    xticklabels({'20-40%','40-60%','60-80%','80-100%'});%{'0-20%','20-40%','40-60%','60-80%','80-100%'});
     xlabel('Participation rate')
     ylabel('Amplitude (F/F0)')
     subplot(1,2,2); hold on
