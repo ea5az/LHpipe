@@ -8,7 +8,7 @@ fixThresh = params.fixThresh;
 LOWERBOUND = params.LOWERBOUND;
 lAmps = [];
 hAmps = [];
-
+ARlist = []; pList = [];
 cID = NaN;
 for ii = 1:length(fileList)
     fileStr = fileList{ii}
@@ -35,7 +35,7 @@ for ii = 1:length(fileList)
     [raster , ~] = TracesToSpikeTimes(readIn.means , thrTraces , params.trDiffRat*thrDiffTraces);
 
     sTab = tab(tab.id == expID & tab.id2 == expID2,:);
-    lAcc = []; nArr = []; ARlist = []; pList = [];
+    lAcc = []; nArr = []; 
     for jj = 1:size(readIn.means , 2)
         for kk = 1:length(sTab.startTimes)
             cStartTime = sTab.startTimes(kk);
