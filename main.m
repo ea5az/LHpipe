@@ -462,7 +462,7 @@ function [] = barParRate(tab,params)
         ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(length(tab.amps(labs == ulabs(ii))))];
     end
     
-    bar(ampBar,'FaceColor');errorbar(ampBar,ampStd,'+');
+    bar(ampBar,'FaceColor',rgb('darkgray'));errorbar(ampBar,ampStd,'+');
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
     ylim([1,1.3])
     %sigstar({[4.75,5.25]},p)
@@ -479,7 +479,7 @@ function [] = barParRate(tab,params)
         jitStd = [jitStd , nanstd(tab.jitter(labs == ulabs(ii)))/sqrt(length(tab.jitter(labs == ulabs(ii))))];
     end
     
-    bar(jitBar);errorbar(jitBar,jitStd,'+');
+    bar(jitBar,'FaceColor',rgb('darkgray'));errorbar(jitBar,jitStd,'+');
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.jitter*(4.999)) == 4));
 
     xticks([1,2,3,4,5])
