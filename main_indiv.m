@@ -70,7 +70,8 @@ lsline
 title(sprintf('correlation: %1.2f',ccoeff))
 xlabel('Mean L-event amplitude ^{F}/_{F0}')
 ylabel('H-event amplitude ^{F}/_{F0}')
-
+%%
+ARMAplot(ARMAtab ,params, 1)
 function fileList = getFileList(pathTo)
     tmp = ls(pathTo);
     fileList = strsplit(tmp);
@@ -98,7 +99,6 @@ function  [expID , expID2] = getExpID(fileStr , params)
             expID2 = str2double(fileStr(params.ID2s:end-params.ID2e));
         end
 end
-
 
 function [W] = ARMAplot(ARMAtab ,params, plotOn)
     M = 2; % number of features
