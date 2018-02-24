@@ -698,9 +698,10 @@ function [] =  IEIs(tab , params)
     xlabel('Interevent intervals (s)'); ylabel('Events (%)')
 end
 
-function [ccoeff] = LHrelation(LHtab,params,plotFlag)
+function [ccoeff] = LHrelation(LHtab,params,plotFlag,markovFlag)
     if nargin < 3
         plotFlag = 1;
+        markovFlag = 0;
     end
     removeIDs = [];
 
