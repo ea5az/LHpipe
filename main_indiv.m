@@ -99,9 +99,8 @@ function  [expID , expID2] = getExpID(fileStr , params)
 end
 
 
-function [W] = ARMAsimple(ARMAtab , plotOn)
-    M = 1;
-    lag = 5;
+function [W] = ARMAplot(ARMAtab ,params, plotOn)
+    M = 2; % number of features
     idList = [];
     for ii = 1:size(ARMAtab,1)-2
         if isnan(ARMAtab.rates(ii+1)) && ARMAtab.id2(ii) + 1 == ARMAtab.id2(ii+2)
@@ -109,18 +108,77 @@ function [W] = ARMAsimple(ARMAtab , plotOn)
         end
     end
     ARMAtab(idList,:) = [];
+
+
     samples = struct();
-    samples.rates = (ARMAtab.rates - nanmean(ARMAtab.rates(:)))/nanstd(ARMAtab.rates(:));
-    Mdl = varm(M , lag);
-    [EstMdl,EstSE,logL,E] = estimate(Mdl , samples.rates);
-    summary = summarize(EstMdl);
-    W = reshape(cell2mat(EstMdl.AR),[M,M,lag]);
+    %samples.rates = (ARMAtab.rates - nanmean(ARMAtab.rates(:)))/nanstd(ARMAtab.rates(:));
+    samples.rates = (ARMAtab.rates - params.lEventUpper)/nanstd(ARMAtab.rates(:));
+    samples.amps = (ARMAtab.amps - nanmean(ARMAtab.amps(:)))/nanstd(ARMAtab.amps(:));
+    samples.jitter = (ARMAtab.jitter - nanmean(ARMAtab.jitter(:)))/nanstd(ARMAtab.jitter(:));
+    N = length(samples.rates);
+    K = 7; % maximal number of lag
+    ARs = 1:K;
+
+    AICs = zeros(K,1); BICs = zeros(K,1); LogLs = zeros(K,1);
+    for jj = 1:length(ARs)
+        AR = ARs(jj);
+        Mdl = varm(M , AR);
+        EstMdl = estimate(Mdl , [samples.rates , samples.amps]);% , samples.jitter]);
+        summary = summarize(EstMdl);
+        AICs(jj) = summary.AIC; BICs(jj) = summary.BIC; LogLs(jj) = summary.LogLikelihood;
+    end
+    [mBI , mBID] = min(BICs);
+
     if plotOn
         figure;
-        bar(fliplr(reshape(W(1,1,:),[lag,1])'),'facecolor',rgb('red'))
-        legend('amp -> amp','Location','northwest')
-        xticks(1:lag)
-        xlabel('time')
-        xticklabels(-fliplr(1:lag))
+        hold on
+        plot([AICs , BICs])
+
+        scatter(mBID ,  mBI , 'rx')
+        xlabel('Autoregressive lag')
+        ylabel('Information Criterion')
+        legend('AIC','BIC')
+        print(sprintf('fig_ARMA/%sAICBIC',''),'-dpng')
     end
+    %mBID = 3*mBID;
+    Mdl = varm(M , mBID);
+    [EstMdl,EstSE,~,E] = estimate(Mdl , [samples.rates , samples.amps]);% , samples.jitter]);
+    summary = summarize(EstMdl);
+    %%
+    W = reshape(cell2mat(EstMdl.AR),[M,M,mBID]);
+
+    if plotOn
+        figure; 
+        subplot(1,2,1)
+        hold on;
+        err = reshape(table2array(summary.Table(3:end,2)),[M,M,mBID]);
+        bar(fliplr(reshape(W(1,1,:),[mBID,1])'),'facecolor',rgb('orange'))
+        bar(fliplr(reshape(W(1,2,:),[mBID,1])'),'facecolor',rgb('lightgrey'))
+        errorbar(fliplr(reshape(W(1,2,:),[mBID,1])'),fliplr(reshape(err(1,2,:),[mBID,1])'),'x','color',rgb('black'))
+        errorbar(fliplr(reshape(W(1,1,:),[mBID,1])'),fliplr(reshape(err(1,1,:),[mBID,1])'),'x','color',rgb('black'))
+        ylim([-0.4 , 0.7])
+        xticks(1:mBID)
+        xticklabels(-fliplr(1:mBID))
+        xlabel('time steps')
+        ylabel('maximum likelihood coefficients')
+        legend('amp -> rate','rate -> rate','Location','northwest')
+
+        subplot(1,2,2)
+        hold on;
+        err = reshape(table2array(summary.Table(3:end,2)),[M,M,mBID]);
+        bar(fliplr(reshape(W(2,2,:),[mBID,1])'),'facecolor',rgb('red'))
+        bar(fliplr(reshape(W(2,1,:),[mBID,1])'),'facecolor',rgb('grey'))
+        errorbar(fliplr(reshape(W(2,2,:),[mBID,1])'),fliplr(reshape(err(2,2,:),[mBID,1])'),'x','color',rgb('black'))
+        errorbar(fliplr(reshape(W(2,1,:),[mBID,1])'),fliplr(reshape(err(2,1,:),[mBID,1])'),'x','color',rgb('black'))
+        f1 = fit((1:mBID)' , fliplr(reshape(W(2,2,:),[mBID,1])')','exp1');
+        plot(linspace(1,mBID+1),f1(linspace(1,mBID+1)),'--','color','black')
+        f2 = fit((1:mBID)' , fliplr(reshape(W(2,1,:),[mBID,1])')','exp1');
+        plot(linspace(1,mBID+1),f2(linspace(1,mBID+1)),'--','color','black')
+        ylim([-0.4 , 0.7])
+        legend('amp -> amp','rate -> amp','Location','northwest')
+        xticks(1:mBID)
+        xlabel('time')
+        xticklabels(-fliplr(1:mBID))
+    end
+
 end
