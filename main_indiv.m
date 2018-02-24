@@ -1,3 +1,6 @@
+ARMAplot(ARMAtab ,params, 1)
+
+%%
 tab = savTab;
 params = getParams(DATASET); flags = getFlags(DATASET);
 
@@ -71,7 +74,6 @@ title(sprintf('correlation: %1.2f',ccoeff))
 xlabel('Mean L-event amplitude ^{F}/_{F0}')
 ylabel('H-event amplitude ^{F}/_{F0}')
 %%
-ARMAplot(ARMAtab ,params, 1)
 function fileList = getFileList(pathTo)
     tmp = ls(pathTo);
     fileList = strsplit(tmp);
