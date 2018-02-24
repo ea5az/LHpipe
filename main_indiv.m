@@ -35,7 +35,7 @@ for ii = 1:length(fileList)
     [raster , ~] = TracesToSpikeTimes(readIn.means , thrTraces , params.trDiffRat*thrDiffTraces);
 
     sTab = tab(tab.id == expID & tab.id2 == expID2,:);
-    lAcc = []; nArr = [];
+    lAcc = []; nArr = []; ARlist = []; pList = [];
     for jj = 1:size(readIn.means , 2)
         for kk = 1:length(sTab.startTimes)
             cStartTime = sTab.startTimes(kk);
@@ -52,9 +52,10 @@ for ii = 1:length(fileList)
                     end
                     lAcc = [lAcc nanmax(sMean)];
                 end
-                
+                pList = [pList sTab.rates(kk)]; ARlist = [ARlist , nanmax(sMean)];
             end
         end
+        pList = [pList nan]; ARlist = [ARlist , nan];
     end
 end
 %%
