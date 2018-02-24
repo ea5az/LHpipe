@@ -914,7 +914,7 @@ function [] = scatterAmpJitter(tab,params,flags , data)
     figure(); 
     subplot(1,2,1);
     colormap(jet);scatter(tab.rates,tab.amps,params.ScatterPointSize,'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black')); 
-    colorbar
+    
     ylabel('Amplitude ^{F}/_{F0}'); xlim([0,1]); %ylim([0.8,1.6])
     xlabel('Participation rate (%)');% colorbar
     
