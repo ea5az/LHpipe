@@ -59,6 +59,7 @@ GMMcluster(tab,params,flags)
 % pause(1)
 % pcaPlot(pcaTab,params);
 % pause(1)
+params.lEventUpper = 0.6
 IEIs(tab , params);
 % %% 
 % if ~flags.skipBINOCULAR && ~flags.skipFORSKOLIN
