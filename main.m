@@ -1,3 +1,7 @@
+LHrelation(tab,params);
+
+
+%%
 clear importCSV; 
 close all
 cd('/storage/gjor/Data/kirchnerj/src/DataAnalysis_final/')
