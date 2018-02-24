@@ -677,11 +677,11 @@ function [] =  IEIs(tab , params)
     Lbins = zeros(60,1);    Hbins = zeros(60,1);
     Lbins(1:2:end) = NLIEI;
     Hbins(2:2:end) = NHIEI;
-
+    dt = (dx(2)-dx(1))/2;
     h1 = histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
-    errorbar(h1.BinEdges(1:end-1)+0.5, h1.Values, sqrt(h1.Values.*(1-h1.Values)./h1.BinCounts),'x')
+    errorbar(h1.BinEdges(1:end-1)+dt, h1.Values, sqrt(h1.Values.*(1-h1.Values)./h1.BinCounts),'x')
     h2 = histogram('BinEdges',dx,'BinCounts',Hbins(1:end-1),'Normalization','Probability','FaceColor',rgb('red'))
-    errorbar(h2.BinEdges(1:end-1)+0.5, h2.Values, sqrt(h2.Values.*(1-h2.Values)./h2.BinCounts),'x')
+    errorbar(h2.BinEdges(1:end-1)+dt, h2.Values, sqrt(h2.Values.*(1-h2.Values)./h2.BinCounts),'x')
 
     xlim([0,300])
     legend({'Participation 20-80%','Participation 80-100%'})
