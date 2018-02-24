@@ -61,6 +61,7 @@ for ii = 1:length(fileList)
         pList = [pList nan]; ARlist = [ARlist , nan]; idList = [idList , sTab.id2(kk)];
     end
 end
+ARMAtab = table(pList' , ARlist' , idList , 'VariableNames',{'rates','amps','id2'});
 %%
 rhAmps = hAmps(~isnan(lAmps));
 rlAmps = lAmps(~isnan(lAmps));
