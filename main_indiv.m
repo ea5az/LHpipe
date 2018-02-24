@@ -58,7 +58,7 @@ for ii = 1:length(fileList)
                 pList = [pList sTab.rates(kk)]; ARlist = [ARlist , nanmax(sMean)];
             end
         end
-        pList = [pList nan]; ARlist = [ARlist , nan];
+        pList = [pList nan]; ARlist = [ARlist , nan]; idList = [idList , sTab.id2(kk)];
     end
 end
 %%
