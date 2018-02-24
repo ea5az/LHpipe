@@ -44,7 +44,7 @@ for ii = 1:length(fileList)
             sMean = readIn.means(cStartTime:cStartTime+cDur , jj);
             if sum(sRaster) > 0
                 if sTab.rates(kk) > params.lEventUpper
-                    lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
+                    lAmps = [lAmps lAcc(end)]; hAmps = [hAmps nanmax(sMean)];%nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
                     lAcc = [];
                 else
                     if sTab.rates(kk) > 0.4 & sTab.rates(kk) < 0.6
