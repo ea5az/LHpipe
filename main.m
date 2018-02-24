@@ -72,7 +72,7 @@ IEIs(tab , params);
 % params.lEventUpper = 0.8;
 % LHrelationVaryDef(tab,params);
 %% 
-LHrelation(tab,params);
+LHrelation(tab,params,1,1);
 % 
 % LHrelationPerID(tab,params);
 % 
