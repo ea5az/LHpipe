@@ -1,6 +1,3 @@
-ARMAplot(ARMAtab ,params, 1)
-
-%%
 tab = savTab;
 params = getParams(DATASET); flags = getFlags(DATASET);
 
@@ -50,7 +47,7 @@ for ii = 1:length(fileList)
                     lAmps = [lAmps nanmean(lAcc)]; hAmps = [hAmps nanmax(sMean)];%/nanmean(nArr)
                     lAcc = [];
                 else
-                    if sTab.rates(kk) > 0.4 & sTab.rates(kk) < 0.7
+                    if sTab.rates(kk) > 0.4 & sTab.rates(kk) < 0.6
                         nArr = [nArr nanmax(sMean)];
                     end
                     lAcc = [lAcc nanmax(sMean)];
