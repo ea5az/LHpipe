@@ -97,3 +97,30 @@ function  [expID , expID2] = getExpID(fileStr , params)
             expID2 = str2double(fileStr(params.ID2s:end-params.ID2e));
         end
 end
+
+
+function [W] = ARMAsimple(ARMAtab , plotOn)
+    M = 1;
+    lag = 5;
+    idList = [];
+    for ii = 1:size(ARMAtab,1)-2
+        if isnan(ARMAtab.rates(ii+1)) && ARMAtab.id2(ii) + 1 == ARMAtab.id2(ii+2)
+            idList = [idList , ii+1];
+        end
+    end
+    ARMAtab(idList,:) = [];
+    samples = struct();
+    samples.rates = (ARMAtab.rates - nanmean(ARMAtab.rates(:)))/nanstd(ARMAtab.rates(:));
+    Mdl = varm(M , lag);
+    [EstMdl,EstSE,logL,E] = estimate(Mdl , samples.rates);
+    summary = summarize(EstMdl);
+    W = reshape(cell2mat(EstMdl.AR),[M,M,lag]);
+    if plotOn
+        figure;
+        bar(fliplr(reshape(W(1,1,:),[lag,1])'),'facecolor',rgb('red'))
+        legend('amp -> amp','Location','northwest')
+        xticks(1:lag)
+        xlabel('time')
+        xticklabels(-fliplr(1:lag))
+    end
+end
