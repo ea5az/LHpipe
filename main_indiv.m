@@ -11,7 +11,7 @@ fixThresh = params.fixThresh;
 LOWERBOUND = params.LOWERBOUND;
 lAmps = [];
 hAmps = [];
-ARlist = []; pList = [];
+ARlist = []; pList = []; idList = [];
 cID = NaN;
 for ii = 1:length(fileList)
     fileStr = fileList{ii}
