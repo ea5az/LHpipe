@@ -679,9 +679,9 @@ function [] =  IEIs(tab , params)
     Hbins(2:2:end) = NHIEI;
     dt = (dx(2)-dx(1))/2;
     h1 = histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
-    errorbar(h1.BinEdges(1:end-1)+dt, h1.Values, MultinomialConfidenceIntervals(h1.BinCounts,0.05),'x')
+    errorbar(h1.BinEdges(1:2:end-1)+dt, h1.Values(1:2:end), MultinomialConfidenceIntervals(h1.BinCounts(1:2:end),0.05),'x')
     h2 = histogram('BinEdges',dx,'BinCounts',Hbins(1:end-1),'Normalization','Probability','FaceColor',rgb('red'))
-    errorbar(h2.BinEdges(1:end-1)+dt, h2.Values, MultinomialConfidenceIntervals(h1.BinCounts,0.05),'x')
+    errorbar(h2.BinEdges(1:2:end-1)+dt, h2.Values(1:2:end), MultinomialConfidenceIntervals(h1.BinCounts(1:2:end),0.05),'x')
 
     xlim([0,300])
     legend({'Participation 20-80%','Participation 80-100%'})
