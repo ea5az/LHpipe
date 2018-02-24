@@ -105,7 +105,7 @@ end
 function [W] = ARMAplot(ARMAtab ,params, plotOn)
     M = 2; % number of features
     idList = [];
-    for ii = 1:size(ARMAtab,1)-2
+    for ii = 1:height(ARMAtab)-2
         if isnan(ARMAtab.rates(ii+1)) && ARMAtab.id2(ii) + 1 == ARMAtab.id2(ii+2)
             idList = [idList , ii+1];
         end
