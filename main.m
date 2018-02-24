@@ -1,4 +1,4 @@
-IEIs(tab , params);
+scatterAmpJitter(savTab2,params,flags);% , data);
 
 
 %%
