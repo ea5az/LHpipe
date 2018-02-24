@@ -65,3 +65,4 @@ end
 
 b = k/sqrt(n);
 boundaries = [max(p-b,0);min(p+b,1)];
+end
