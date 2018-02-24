@@ -462,7 +462,7 @@ function [] = barParRate(tab,params)
         ampStd = [ampStd , nanstd(tab.amps(labs == ulabs(ii)))/sqrt(length(tab.amps(labs == ulabs(ii))))];
     end
     
-    bar(ampBar,'FaceColor',rgb('darkgray'));errorbar(ampBar,ampStd,'+');
+    bar(ampBar,'FaceColor',rgb('darkgray'));errorbar(ampBar,ampStd,'+','color',rgb('black'));
     [h,p,ci,stats] = ttest2(tab.amps(floor(tab.rates*(4.999))  < 4),tab.amps(floor(tab.rates*(4.999)) == 4));
     ylim([1,1.3])
     %sigstar({[4.75,5.25]},p)
