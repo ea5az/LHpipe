@@ -689,7 +689,7 @@ function [] =  IEIs(tab , params)
         [rNLIEI,~] = histcounts(datasample(LIEI,length(LIEI)),dxx);
         scatter(h1.BinEdges(1:2:end-1)+dt+rand(1,length(h1.BinEdges(1:2:end-1)))-0.5 , rNLIEI/sum(rNLIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
         [rNHIEI,~] = histcounts(datasample(HIEI,length(HIEI)),dxx);
-        scatter(h2.BinEdges(2:2:end)+dt+rand(1,length(h2.BinEdges(2:2:end))-0.5  , rNHIEI/sum(rNHIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
+        scatter(h2.BinEdges(2:2:end)+dt+rand(1,length(h2.BinEdges(2:2:end)))-0.5  , rNHIEI/sum(rNHIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
 
     end
     xlim([0,300])
