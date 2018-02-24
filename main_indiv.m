@@ -111,8 +111,8 @@ function [W] = ARMAplot(ARMAtab ,params, plotOn)
             idList = [idList , ii+1];
         end
     end
-    ARMAtab(idList,:) = [];
-
+    %ARMAtab(idList,:) = []; 
+    ARMAtab(isnan(ARMAtab.amps),:) = [];
 
     samples = struct();
     %samples.rates = (ARMAtab.rates - nanmean(ARMAtab.rates(:)))/nanstd(ARMAtab.rates(:));
