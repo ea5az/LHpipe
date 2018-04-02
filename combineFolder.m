@@ -171,7 +171,7 @@ function [] = plotRast(raster,roiVals,evStartTime,evDurations,evRates,ParRate , 
 
     [~,fName,~] = fileparts(file);
     colormap(jet)
-    print(['fig_' params.Dataset '/tracesAndRaster/' fName(params.ID1s:end) '.svg'],'-dsvg')
+    % print(['fig_' params.Dataset '/tracesAndRaster/' fName(params.ID1s:end) '.svg'],'-dsvg')
     close(f)
 
 %     f = figure;
