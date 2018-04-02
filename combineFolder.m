@@ -169,7 +169,6 @@ function [] = plotRast(raster,roiVals,evStartTime,evDurations,evRates,ParRate , 
     scatter(evStartTime , evRates*size(raster,2) , 'filled')
     scatter(evStartTime+evDurations' , evRates*size(raster,2) , 'filled')
 
-    
     [~,fName,~] = fileparts(file);
     colormap(jet)
     % print(['fig_' params.Dataset '/tracesAndRaster/' fName(params.ID1s:end) '.svg'],'-dsvg')
