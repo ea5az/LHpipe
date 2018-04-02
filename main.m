@@ -1,5 +1,3 @@
-scatterAmpJitter(tab,params,flags);% , data);
-
 
 %%
 clear importCSV; 
@@ -12,7 +10,7 @@ addpath(genpath('tools'))
 %
 warning off
 disp('Starting.')
-DATASET = 'Fried';
+DATASET = 'Curly';
 params = getParams(DATASET); flags = getFlags(DATASET);
 [savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
 %%
@@ -38,7 +36,7 @@ for ii = 1:length(uID)
 end
 
 %%
-scatterAmpJitter(savTab2,params,flags);% , data);
+scatterAmpJitter(tab,params,flags);% , data);
 %%
 boxParRate(savTab,params)
 %%
