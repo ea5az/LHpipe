@@ -159,7 +159,9 @@ end
 function [] = plotRast(raster,roiVals,evStartTime,evDurations,evRates,ParRate , file , params,flags)
     f = figure('units','normalized','outerposition',[0 0 1 1],'visible',flags.plotVisible);
     subtightplot(2,1,1)
-    plot(smoothdata(roiVals)./repmat(max(roiVals,[],1),size(roiVals,1),1) +repmat(size(roiVals,2):-1:1,size(roiVals,1),1),'-','color',rgb('black'))
+    %plot(smoothdata(roiVals)./repmat(max(roiVals,[],1),size(roiVals,1),1) +repmat(size(roiVals,2):-1:1,size(roiVals,1),1),'-','color',rgb('black'))
+    plot(roiVals./repmat(max(roiVals,[],1),size(roiVals,1),1) +repmat(size(roiVals,2):-1:1,size(roiVals,1),1),'-','color',rgb('black'))
+
     xlim([0, size(roiVals,1)]); ylim([0 , size(roiVals,2)+1])
     subtightplot(2,1,2)
 
