@@ -85,7 +85,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
             for jj = 1:3
                 parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                 scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
-                    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,5,'filled')
+                    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,15,'filled')
             end
             
         end
