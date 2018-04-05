@@ -81,8 +81,8 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
             figure(); hold on;
             scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
             for jj = 1:3
-                scatter(readIn.pos(find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 ),2) + (rand(size(readIn-pos , 1),1) -0.5)*2 ,...
-                    -readIn.pos(find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 ),1) + (rand(size(readIn-pos , 1),1) -0.5)*2,'filled')
+                scatter(readIn.pos(find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 ),2) + (rand(size(readIn.pos , 1),1) -0.5)*2 ,...
+                    -readIn.pos(find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 ),1) + (rand(size(readIn.pos , 1),1) -0.5)*2,'filled')
             end
             
         end
