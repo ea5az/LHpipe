@@ -753,9 +753,16 @@ function [ccoeff] = LHrelation(LHtab,params,plotFlag,markovFlag)
     
     [R,P,RL,RU] = corrcoef(rlAmp(~isnan(rhAmp)),rhAmp(~isnan(rhAmp)))
     ccoeff = R(1,2);
+    Mrkr = '+o*.xsd^v><ph';
+    C = colormap(jet(3));
+
     if plotFlag
         figure()
-        scatter(rlAmp,rhAmp ,45,rIDs,'filled')%'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black'))
+        uID = unique(rIDs);
+        hold on;
+        for jj = 1:length(uID)
+            scatter(rlAmp(rIDs == uID(jj)),rhAmp(rIDs == uID(jj)) ,45, 'Marker',Mrkr(jj),'MarkerFaceColor',C(floor(33/11.01)+1));%,'MarkerEdgeColor',rgb('black'))
+        end
         lsline
         %colorbar
         title(sprintf('H-event: %2.0f , correlation: %1.2f',params.lEventUpper, ccoeff))
