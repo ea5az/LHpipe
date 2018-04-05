@@ -754,7 +754,7 @@ function [ccoeff] = LHrelation(LHtab,params,plotFlag,markovFlag)
     ccoeff = R(1,2);
     if plotFlag
         figure()
-        scatter(rlAmp,rhAmp ,45,rAGES,'filled')%'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black'))
+        scatter(rlAmp,rhAmp ,45,rIDs,'filled')%'MarkerFaceColor',rgb('gray'),'MarkerEdgeColor',rgb('black'))
         lsline
         %colorbar
         title(sprintf('H-event: %2.0f , correlation: %1.2f',params.lEventUpper, ccoeff))
