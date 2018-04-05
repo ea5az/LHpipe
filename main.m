@@ -1,3 +1,4 @@
+LHrelation(tab,params,1,1);
 
 %%
 clear importCSV; 
