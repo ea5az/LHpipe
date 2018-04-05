@@ -761,7 +761,7 @@ function [ccoeff] = LHrelation(LHtab,params,plotFlag,markovFlag)
         uID = unique(rIDs);
         hold on;
         for jj = 1:length(uID)
-            scatter(rlAmp(rIDs == uID(jj)),rhAmp(rIDs == uID(jj)) ,45, 'Marker',Mrkr(jj),'MarkerFaceColor',C(floor(33/11.01)+1));%,'MarkerEdgeColor',rgb('black'))
+            scatter(rlAmp(rIDs == uID(jj)),rhAmp(rIDs == uID(jj)) ,45, 'Marker',Mrkr(jj),'MarkerFaceColor',C(floor(33/11.01)+1,:));%,'MarkerEdgeColor',rgb('black'))
         end
         lsline
         %colorbar
