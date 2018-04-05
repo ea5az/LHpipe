@@ -84,6 +84,12 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
             axis equal
 
             for jj = 1:length(evStartTime)
+                if jj > 1 & evRates(jj-1) > 0.8
+                    figure(); hold on;
+                    scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
+                    axis equal
+                end
+
                 if evRates(jj) > 0.8
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
