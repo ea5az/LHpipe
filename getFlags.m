@@ -49,6 +49,7 @@ function flags = getFlags(DATASET)
     flags.scatterPos = 1; % scatter ROI positions
     flags.corrPlot = 0; % plot correlations
     flags.plotARMA = 1; % display AR plot
+    flags.plotARMA = 1; % display AR plot
     flags.meanCorr = 0; % use mean value of correlations instead of cell individual
     flags.storeCorr = 0; % store correlations in file
     flags.addRegLine = 0; % add regression line to scatter plot
