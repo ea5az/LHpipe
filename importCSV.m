@@ -109,7 +109,7 @@ function [readIn ,skip] = importCSV(csvPath , params , flags)
         scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
         axis equal
 %         print(['fig_Fried/ROI/' expName '.png'],'-dpng')
-        close(f)
+%        close(f)
     end
     % normalize each cell by its own F0
     if correctF0 
