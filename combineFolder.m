@@ -80,13 +80,13 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         if flags.plotLHpos
             
             figure(); hold on;
-            scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
+            scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'filled')
             axis equal
 
             for jj = 1:length(evStartTime)
                 if jj > 1 & evRates(jj-1) > 0.8
                     figure(); hold on;
-                    scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
+                    scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'filled')
                     axis equal
                 end
 
