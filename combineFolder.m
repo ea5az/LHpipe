@@ -78,14 +78,21 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         evJitter = get_evJitter(raster , evStartTime , evDurations).*(evDurationsFWHM./evDurations);
 
         if flags.plotLHpos
+            
             figure(); hold on;
             scatter(readIn.pos(:,2),-readIn.pos(:,1),'filled')
             axis equal
 
-            for jj = 1:3
-                parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
-                scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
-                    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,15,'filled')
+            for jj = 1:length(evStartTime)
+                if evRates(jj) > 0.8
+                    parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
+                    scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
+                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,25,'Marker','*')
+                else
+                    parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
+                    scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
+                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,15,'Marker','o','MarkerFaceColor')
+                end
             end
             
         end
