@@ -103,7 +103,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                     LHrat = [LHrat ; partiA'./nanmean(LHratColl(parti , cc:jj-1),2)];
                     numPrecLEvents = sum(~isnan(LHratColl(parti , cc:jj-1)),2);
                     for kk = 1:length(numPrecLEvents)
-                        LHratCell(numPrecLEvents(kk) + 1) = [LHratCell(numPrecLEvents(kk + 1)) partiA(kk)];
+                        LHratCell{numPrecLEvents(kk) + 1} = [LHratCell{numPrecLEvents(kk + 1)} partiA(kk)];
                     end
                     cc = jj + 1;
                 else
