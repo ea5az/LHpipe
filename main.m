@@ -681,19 +681,21 @@ function [] =  IEIs(tab , params , errorbarsFlag)
     Hbins(2:2:end) = NHIEI;
     dt = (dx(2)-dx(1))/2;
     h1 = histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
-    
-    [~,b1] = MultinomialConfidenceIntervals(h1.BinCounts(1:2:end),0.05);
-    errorbar(h1.BinEdges(1:2:end-1)+dt, h1.Values(1:2:end),b1(1,:)-h1.Values(1:2:end),b1(2,:)-h1.Values(1:2:end) ,'x')
+    if errorbarsFlag
+        [~,b1] = MultinomialConfidenceIntervals(h1.BinCounts(1:2:end),0.05);
+        errorbar(h1.BinEdges(1:2:end-1)+dt, h1.Values(1:2:end),b1(1,:)-h1.Values(1:2:end),b1(2,:)-h1.Values(1:2:end) ,'x')
+    end
     h2 = histogram('BinEdges',dx,'BinCounts',Hbins(1:end-1),'Normalization','Probability','FaceColor',rgb('red'))
-    [~,b2] = MultinomialConfidenceIntervals(h2.BinCounts(2:2:end),0.05);
-    errorbar(h2.BinEdges(2:2:end-1)+dt, h2.Values(2:2:end),b2(1,:)-h2.Values(2:2:end),b2(2,:)-h2.Values(2:2:end),'x')
+    if errorbarsFlag
+        [~,b2] = MultinomialConfidenceIntervals(h2.BinCounts(2:2:end),0.05);
+        errorbar(h2.BinEdges(2:2:end-1)+dt, h2.Values(2:2:end),b2(1,:)-h2.Values(2:2:end),b2(2,:)-h2.Values(2:2:end),'x')
 
-    for ii = 1:500
-        [rNLIEI,~] = histcounts(datasample(LIEI,length(LIEI)),dxx);
-        scatter(h1.BinEdges(1:2:end-1)+dt+rand(1,length(h1.BinEdges(1:2:end-1)))-0.5 , rNLIEI/sum(rNLIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
-        [rNHIEI,~] = histcounts(datasample(HIEI,length(HIEI)),dxx);
-        scatter(h2.BinEdges(2:2:end)+dt+rand(1,length(h2.BinEdges(2:2:end)))-0.5  , rNHIEI/sum(rNHIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
-
+        for ii = 1:500
+            [rNLIEI,~] = histcounts(datasample(LIEI,length(LIEI)),dxx);
+            scatter(h1.BinEdges(1:2:end-1)+dt+rand(1,length(h1.BinEdges(1:2:end-1)))-0.5 , rNLIEI/sum(rNLIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
+            [rNHIEI,~] = histcounts(datasample(HIEI,length(HIEI)),dxx);
+            scatter(h2.BinEdges(2:2:end)+dt+rand(1,length(h2.BinEdges(2:2:end)))-0.5  , rNHIEI/sum(rNHIEI),5,'MarkerFaceColor',rgb('black'),'MarkerEdgeColor',rgb('black'))
+        end
     end
     xlim([0,300])
     legend({'Participation 20-80%','Participation 80-100%'})
