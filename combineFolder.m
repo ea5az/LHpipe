@@ -85,7 +85,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
             figure(); hold on;
             scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'MarkerFaceColor',[0.7 0.7 0.7],'MarkerEdgeColor',[0.7 0.7 0.7])
             axis equal
-            LHratColl = zeros(size(readIn.pos , 1));
+            LHratColl = zeros(size(readIn.pos , evStartTime));
             for jj = 1:length(evStartTime)
                 if jj > 1 & evRates(jj-1) > 0.8
                     figure(); hold on;
