@@ -101,7 +101,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                    %  scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
                     %    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                     LHrat = [LHrat ; partiA'./nanmean(LHratColl(parti , cc:jj-1),2)];
-                    cc = jj;
+                    cc = jj + 1;
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     partiB = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
