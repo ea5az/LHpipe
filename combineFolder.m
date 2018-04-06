@@ -98,8 +98,10 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                         -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*280,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
+                    partiA = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti));
+
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
-                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,15,'Marker','o','MarkerFaceColor','red','MarkerEdgeColor','red')
+                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*280,'Marker','o','MarkerFaceColor','red','MarkerEdgeColor','red')
                 end
             end
             
