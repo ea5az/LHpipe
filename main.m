@@ -1115,28 +1115,28 @@ function [] = correlationPlot(corTab,params)
     boxplot(corTab.cors(corTab.range == 1),corTab.age(corTab.range == 1))
     xlabel('Postnatal days')
     ylabel(sprintf('Corr %d-%d \\mu m', params.lNeigh , params.mNeigh))
-    print(sprintf('fig_Fried/%sCorrs1','V1'),'-dpng')
+    %print(sprintf('fig_Fried/%sCorrs1','V1'),'-dpng')
     figure(); 
     hold on
     title('Mid range pairwise correlations')
     boxplot(corTab.cors(corTab.range == 2),corTab.age(corTab.range == 2))
     xlabel('Postnatal days')
     ylabel(sprintf('Corr %d-%d \\mu m', params.mNeigh , params.umNeigh))
-    print(sprintf('fig_Fried/%sCorrs2','V1'),'-dpng')
+   % print(sprintf('fig_Fried/%sCorrs2','V1'),'-dpng')
     figure(); 
     hold on
     title('Long range pairwise correlations')
     boxplot(corTab.cors(corTab.range == 3),corTab.age(corTab.range == 3))
     xlabel('Postnatal days')
     ylabel(sprintf('Corr %d-%d \\mu m', params.umNeigh , params.uNeigh))
-    print(sprintf('fig_Fried/%sCorrs3','V1'),'-dpng')
+    %print(sprintf('fig_Fried/%sCorrs3','V1'),'-dpng')
     figure(); 
     hold on
     title('Very Long range pairwise correlations')
     boxplot(corTab.cors(corTab.range == 4),corTab.age(corTab.range == 4))
     xlabel('Postnatal days')
     ylabel(sprintf('Corr > %d \\mu m', params.uNeigh))
-    print(sprintf('fig_Fried/%sCorrs4','V1'),'-dpng')
+    %print(sprintf('fig_Fried/%sCorrs4','V1'),'-dpng')
 end
 
 function [] = correlationPooledPlot(corTab,params,flags)  
