@@ -65,9 +65,10 @@ IEIs(tab , params);
 % if ~flags.skipBINOCULAR && ~flags.skipFORSKOLIN
 %     pcaEnuFor(pcaTab,params);
 % end
-% correlationPlot(corTab,params);
+%%
+correlationPlot(corTab,params);
 % 
-% correlationPooledPlot(corTab,params,flags);
+correlationPooledPlot(corTab,params,flags);
 %%
 % params.lEventUpper = 0.8;
 % LHrelationVaryDef(tab,params);
