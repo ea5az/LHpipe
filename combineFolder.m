@@ -96,13 +96,13 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                 if evRates(jj) > 0.8
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     partiA = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
-
+                    LHratColl(parti , jj) = partiA;
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
                         -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     partiB = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
-
+                    LHratColl(parti , jj) = partiB;
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
                         -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiB.^2*70,'Marker','o','MarkerFaceAlpha',0.5,'MarkerFaceColor','red','MarkerEdgeColor','black')
                 end
