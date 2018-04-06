@@ -86,6 +86,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
             % scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'MarkerFaceColor',[0.7 0.7 0.7],'MarkerEdgeColor',[0.7 0.7 0.7])
             % axis equal
             LHratColl = nan(size(readIn.pos,1) , length(evStartTime));
+            cc = 1;
             for jj = 1:length(evStartTime)
                 if jj > 1 & evRates(jj-1) > 0.8
                     % figure(); hold on;
@@ -99,7 +100,8 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                     LHratColl(parti , jj) = partiA;
                    %  scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
                     %    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
-                    LHrat = [LHrat ; partiA'./nanmean(LHratColl(parti , 1:jj-1),2)];
+                    LHrat = [LHrat ; partiA'./nanmean(LHratColl(parti , cc:jj-1),2)];
+                    cc = jj;
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     partiB = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
