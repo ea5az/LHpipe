@@ -26,6 +26,9 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
     cpdTab = zeros(600,4);
     
     cID = NaN; cCond = NaN;
+    
+    LHrat = [];
+    
     for ii = 1:length(fileList)
         fileStr = fileList{ii}
         % extract expriment identifiers
@@ -98,10 +101,10 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                         -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
-                    partiA = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
+                    partiB = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti))./max(readIn.means(: , parti));
 
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
-                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','o','MarkerFaceAlpha',0.5,'MarkerFaceColor','red','MarkerEdgeColor','black')
+                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiB.^2*70,'Marker','o','MarkerFaceAlpha',0.5,'MarkerFaceColor','red','MarkerEdgeColor','black')
                 end
             end
             
