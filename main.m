@@ -649,7 +649,11 @@ function LHrelationJitter(LHtab , params)
 
 end
 
-function [] =  IEIs(tab , params)
+function [] =  IEIs(tab , params , errorbarsFlag)
+    if nargin < 3
+        errorbarsFlag = 0
+    end
+
     %%
     removeIDs = [];
 
@@ -677,6 +681,7 @@ function [] =  IEIs(tab , params)
     Hbins(2:2:end) = NHIEI;
     dt = (dx(2)-dx(1))/2;
     h1 = histogram('BinEdges',dx,'BinCounts',Lbins(1:end-1),'Normalization','Probability','FaceColor',rgb('darkgray'))
+    
     [~,b1] = MultinomialConfidenceIntervals(h1.BinCounts(1:2:end),0.05);
     errorbar(h1.BinEdges(1:2:end-1)+dt, h1.Values(1:2:end),b1(1,:)-h1.Values(1:2:end),b1(2,:)-h1.Values(1:2:end) ,'x')
     h2 = histogram('BinEdges',dx,'BinCounts',Hbins(1:end-1),'Normalization','Probability','FaceColor',rgb('red'))
