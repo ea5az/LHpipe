@@ -28,7 +28,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
     cID = NaN; cCond = NaN;
     
     LHrat = [];
-    
+    LHratCell = cell();
     for ii = 1:length(fileList)
         fileStr = fileList{ii}
         % extract expriment identifiers
@@ -101,6 +101,10 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                    %  scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
                     %    -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*70,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                     LHrat = [LHrat ; partiA'./nanmean(LHratColl(parti , cc:jj-1),2)];
+                    numPrecLEvents = sum(~isnan(LHratColl(parti , cc:jj-1)),2);
+                    for kk = 1:length(numPrecLEvents)
+                        LHratCell(numPrecLEvents(kk)) = [LHratCell(numPrecLEvents(kk)) partiA(kk)];
+                    end
                     cc = jj + 1;
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
