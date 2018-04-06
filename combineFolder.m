@@ -28,7 +28,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
     cID = NaN; cCond = NaN;
     
     LHrat = [];
-    LHratCell = cell(1,1);
+    LHratCell = {};
     for ii = 1:length(fileList)
         fileStr = fileList{ii}
         % extract expriment identifiers
