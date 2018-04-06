@@ -80,13 +80,13 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         if flags.plotLHpos
             
             figure(); hold on;
-            scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'filled')
+            scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'MarkerFaceColor','black','MarkerEdgeColor','black')
             axis equal
 
             for jj = 1:length(evStartTime)
                 if jj > 1 & evRates(jj-1) > 0.8
                     figure(); hold on;
-                    scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'filled')
+                    scatter(readIn.pos(:,2),-readIn.pos(:,1),50,'MarkerFaceColor','black','MarkerEdgeColor','black')
                     axis equal
                 end
 
@@ -95,7 +95,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
                     partiA = max(readIn.means(evStartTime(jj):evStartTime(jj)+evDurations(jj) , parti));
 
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
-                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*280,'Marker','*','MarkerFaceColor','green','MarkerEdgeColor','green')
+                        -readIn.pos(parti,1) + (rand(length(parti),1) -0.5)*5,partiA.^2*280,'Marker','*','MarkerFaceColor','blue','MarkerEdgeColor','blue')
                 else
                     parti = find(sum(raster(evStartTime(jj):evStartTime(jj)+evDurations(jj) , :),1) > 0 );
                     scatter(readIn.pos(parti,2) + (rand(length(parti),1) -0.5)*5 ,...
