@@ -10,7 +10,7 @@ addpath(genpath('tools'))
 %
 warning off
 disp('Starting.')
-DATASET = 'Fried';
+DATASET = 'Palo';
 params = getParams(DATASET); flags = getFlags(DATASET);
 [savTab,savPcaTab,corTab,cpdTab] = combineFolder(params.TRACESpath,params , flags);
 %%
