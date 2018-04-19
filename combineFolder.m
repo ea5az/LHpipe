@@ -37,14 +37,17 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         % get the average activity from the ROI's.
         [readIn ,skip] = importCSV([pathTo fileStr] , params , flags);
         
-        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_READIN.mat']) , 'readIn')
-        ms = readIn.means;
-        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_MEANS.mat']) , 'ms')
 
         % If bad animal or too many ROIs
         if skip || size(readIn.means,2) > params.upperN
             continue 
         end
+        
+        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_READIN.mat']) , 'readIn')
+        ms = readIn.means;
+        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_MEANS.mat']) , 'ms')
+
+        
         % extract thresholds
         if flags.fixThreshPerExp
             if cID ~= expID || logical((cCond ~= readIn.cond)*flags.changeAtCondChange)
