@@ -38,7 +38,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         [readIn ,skip] = importCSV([pathTo fileStr] , params , flags);
         
         save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_READIN.mat']) , 'readIn')
-        means = readIn.means;
+        ms = readIn.means;
         save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_MEANS.mat']) , 'means')
 
         % If bad animal or too many ROIs
