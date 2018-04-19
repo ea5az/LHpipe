@@ -39,7 +39,7 @@ function [tab,pcaTab,corTab,cpdTab] = combineFolder(pathTo, params , flags)
         
         save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_READIN.mat']) , 'readIn')
         ms = readIn.means;
-        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_MEANS.mat']) , 'means')
+        save(fullfile('mat/PALOTS/',[fileStr(1:end-4) , '_MEANS.mat']) , 'ms')
 
         % If bad animal or too many ROIs
         if skip || size(readIn.means,2) > params.upperN
